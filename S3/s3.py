@@ -57,6 +57,14 @@ def deletebucket():
             print()
             print("{} bucket deleted successfully".format(bucketname))
 
+def uploadobject():
+    s3=boto3.client('s3')
+    listbucket()
+    print()
+    bucketname=input("Enter bucket name:")
+    print("Filename should include extension also and should be present in current working directory")
+    filename=input("Filename to be uploaded")
+    s3.upload_file(Filename=filename,Bucket=bucketname,Key=filename)
 
 a=0
 while(a!=5):
@@ -76,4 +84,4 @@ while(a!=5):
     elif a==3:
         listbucket()
     elif a==4:
-        pass
+        uploadobject()
