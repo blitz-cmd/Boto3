@@ -19,12 +19,13 @@ def deletebucket():
     print()
     bucketname=input("Enter bucket name:")
     b=0
-    while(b!=5):
+    while(b!=6):
         print("1)List all objects in bucket")
         print("2)Empty the bucket")
         print("3)Delete particular object in bucket")
-        print("4)Delete bucket")
-        print("5)Quit")
+        print("4)Delete bucket policy")
+        print("5)Delete bucket")
+        print("6)Quit")
         b=int(input("Choose option:"))
         s3=boto3.client('s3')
         if b==1:            
@@ -47,6 +48,14 @@ def deletebucket():
             for obj in list:
                 print(obj["Key"])
             s3.delete_object(Bucket=bucketname,Key=input("Enter object name to be deleted:"))
+        elif b==4:
+            s3.delete_bucket_policy(Bucket=bucketname)
+            print()
+            print("{} bucket policy deleted successfully".format(bucketname))
+        elif b==5:
+            s3.delete_bucket(Bucket=bucketname)
+            print()
+            print("{} bucket deleted successfully".format(bucketname))
 
 
 a=0
