@@ -130,3 +130,5 @@ dmypy.json
 
 # Pyre type checker
 .pyre/
+c.py
+import urllib3.py
